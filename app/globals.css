@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+:root {
+  /*----COLOURS----*/
+  --background: #000000;
+  --foreground: #1E1E1E;
+  --primary: #4996A6;
+  --text-body: #3e99c0;
+  --title: #11DFC6;
+  --debugred: #d10f0f;
+  --inspector-text: #16be9a;
+  --bg-lines: #184234;
+
+  --navitem-text: #cecece;
+  --navitem-text-hover: #11DFC6;
+  --navitem-bg: #1E1E1E; /*same as foreground*/
+  --navitem-bg-hover: #252526;
+  --navitem-separator: #383838;
+  --ripple-color: #707070;
+  --some-icon: #34c2db;
+  --contact-card: #111111;
+  --contact-icon: #1cd497;
+  --skill-bg: #131313;
+
+  --mobile-hamburger: #52b6aa;
+  --mobile-hamburger-bg: #333333;
+
+  --project-line: #0ad4a9;
+  --mobile-project-separator: #04362b;
+  --project-tools: #3cb49a;
+  --project-dot: #b4b4b4;
+  --project-dot-border: #000000;
+
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  text-underline-offset: 30%;
+}
+
+
+
+
+main {
+  flex: 1 0 auto;
+  min-height: calc(100vh - 145px); /* 85px header + 60px footer */
+  .action-button{
+    background-color: var(--navitem-bg);
+    &:hover{
+      background-color: var(--navitem-bg-hover);
+    }
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--text-body);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects{
+  h1{
+    padding-left: 10%;
+    padding-right: auto;
+    padding-top: 3%;
+    font-weight: bold;
+    font-size: 52;
+  }
+}
+.contacts{
+  h1{
+    font-size: 52;
+    font-weight: bold;
+  }
+}
+.project-year{
+  font-size: 30;
+}
+.mobile-project-separator{
+  color: var(--mobile-project-separator);
+  border-width: 1px;
+}
+.project-line{
+  background-color: var(--project-line);
+  width: 1px;
+}
+.project-line-mobile{
+  border-color: var(--project-line);
+}
+.project-dot{
+  color: var(--project-dot);
+  background-color: var(--project-dot);
+  border-color: var(--project-dot-border);
+  border-width: 3;
+}
+.text-xs{
+  color: var(--project-tools);
+}
+.inspector-text{
+  color: var(--inspector-text);
+}
+.skill{
+  background-color: var(--skill-bg);
+}
+
+.contact-methods{
+  
+  .contact-card{
+    border-radius: 30px;
+    background-color: var(--contact-card);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .contact-icon {
+      transition: transform 0.3s ease-in-out;
+      color: var(--contact-icon);
+    }
+    
+    &:hover .contact-icon {
+      transform: scale(1.1);
+    }
+  }
+}
+/*---------------------HEADER---------------------*/
+.headers{
+  background-color: var(--foreground);
+  width: 100%;
+  z-index: 20;
+  .header-mobile{
+    min-height: 70px;
+    justify-content: right;
+
+    .circle{
+      color: var(--mobile-hamburger-bg);
+      scale: 4;
+    }
+    .hamburger{
+      color: var(--mobile-hamburger);
+      scale: 2.5;
+    }
+    .text-title {
+      font-size: 38;
+      color: var(--title);
+      align-self: center;
+      margin-left: 5%;
+    }
+  }
+
+  .header-desktop {
+    min-height: 85px;
+    justify-content: left;
+    display: flex;
+    align-items: stretch;
+    
+    .text-title {
+        font-size: 50;
+        color: var(--title);
+        width: 40%;
+        align-self: center;
+        
+      }
+      .navbar {
+        height: 100%;
+        display: flex;
+        align-items: stretch;
+
+        li {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: stretch;
+          text-align: center;
+        }
+      }
+
+      .navitem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--navitem-text);
+        padding: 0 1rem;
+        text-decoration: none;
+        transition: all 0.2s ease-in-out;
+        width: 130px;
+        background-color: var(--navitem-bg);
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background-color: var(--navitem-text-hover);
+          transform: scaleX(0);
+          transition: transform 0.2s ease-in-out;
+        }
+        
+        &:hover {
+          color: var(--navitem-text-hover);
+          background-color: var(--navitem-bg-hover);
+
+          &::after {
+            transform: scaleX(1);
+        }
+      }
+    }
+    .navitem-border{
+        border-right: 2px solid var(--navitem-separator);
+        border-left: 2px solid var(--navitem-separator);
+      }
+
+    .some{
+      display: flex;
+      align-items: center;
+      padding-right: 2rem;
+      margin-left: auto;
+      .someicon{
+        color: var(--some-icon);
+      }
+    }
+    .some-icons-list{
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}
+.sidebar-navbar {
+  touch-action: none !important;
+  
+  .sidebar-navitem {
+    color: var(--navitem-text);
+    touch-action: none !important; 
+  }
+  
+  .sidebar-navitem-border{
+    border-top: 2px solid var(--navitem-separator);
+    border-bottom: 2px solid var(--navitem-separator);
+  }
+}
+
+/* For the entire ReactSidebar component */
+.ReactSidebar__sidebar {
+  overscroll-behavior: none !important; 
+  touch-action: none !important; 
+  -webkit-overflow-scrolling: touch;
+}
+
+.ReactSidebar__overlay {
+  overscroll-behavior: none !important;
+  touch-action: none !important;
+  -webkit-overflow-scrolling: none !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+/* Prevent body scrolling when sidebar is open */
+body.sidebar-open {
+  overscroll-behavior: none !important;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+}
+.sidebar-overlay {
+  touch-action: none !important;
+  -webkit-overflow-scrolling: none !important;
+}
+
+/*-------------------END HEADER-------------------*/
+
+/*---------------------FOOTER---------------------*/
+.footer{
+  
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  
+  min-height: 60px;
+  display: flex;
+  margin-top: auto;
+  padding: 1rem;
+
+  a{
+    margin-left: auto;
+    padding-right: 2px;
+  }
+ 
+  
+}
+/*-------------------END FOOTER-------------------*/
+@keyframes ripple {
+  to {
+    transform: scale(6);
+    opacity: 0;
+  }
+}
+
+.animate-ripple {
+  width: 100px;
+  height: 90px;
+  background: var(--ripple-color);
+  opacity: 0.7;
+  animation: ripple 500ms;
+}
