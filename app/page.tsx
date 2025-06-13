@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "./components/Header";
@@ -16,9 +17,57 @@ import {
 } from "react-icons/fa";
 import { SiKotlin, SiTypescript, SiTailwindcss, SiUnrealengine } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
+import { IconType } from "react-icons";
 
-// Define skill categories for better organization
-const skillCategories = {
+// Define types for better type safety
+type Skill = {
+  id?: string;
+  icon: IconType;
+  label: string;
+  iconSize?: string;
+};
+
+type SkillCategories = {
+  professional: Skill[];
+  languages: Skill[];
+  technologies: Skill[];
+};
+
+type Experience = {
+  id?: string;
+  title: string;
+  company: string;
+  period: string;
+  type?: 'education' | 'work';
+  description?: string;
+};
+
+// Add icon mapping object for API-based icons
+const iconMap: Record<string, IconType> = {
+  "FaUsers": FaUsers,
+  "FaPencilAlt": FaPencilAlt,
+  "FaLaptopCode": FaLaptopCode,
+  "FaCube": FaCube,
+  "FaPython": FaPython,
+  "TbBrandCSharp": TbBrandCSharp,
+  "SiTypescript": SiTypescript,
+  "SiKotlin": SiKotlin,
+  "FaPhp": FaPhp,
+  "FaHtml5": FaHtml5,
+  "FaDatabase": FaDatabase,
+  "FaReact": FaReact,
+  "FaLaravel": FaLaravel,
+  "SiTailwindcss": SiTailwindcss,
+  "FaUnity": FaUnity,
+  "SiUnrealengine": SiUnrealengine,
+  "FaGithub": FaGithub,
+  "FaMicrochip": FaMicrochip,
+  "FaAndroid": FaAndroid,
+  "FaMobile": FaMobile,
+};
+
+// Define fallback skill categories
+const defaultSkillCategories: SkillCategories = {
   professional: [
     { icon: FaUsers, label: "Collaborative Development" },
     { icon: FaPencilAlt, label: "UI/UX Design" },
@@ -48,6 +97,68 @@ const skillCategories = {
 };
 
 export default function Home() {
+  const [skillCategories, setSkillCategories] = useState<SkillCategories>(defaultSkillCategories);
+  const [education, setEducation] = useState<Experience[]>([
+    { id: "edu-default", title: "Computer Science", company: "Lapland University of Applied Sciences", period: "2023 - Present" }
+  ]);
+  const [work, setWork] = useState<Experience[]>([
+    { id: "work-default", title: "IT Intern", company: "Nordic Unique Travels", period: "2025" }
+  ]);
+
+  // Fetch data on component mount
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Fetch skills and experiences in parallel
+        const [skillsRes, experiencesRes] = await Promise.all([
+          fetch('/api/skills'),
+          fetch('/api/experiences')
+        ]);
+        
+        const skillsData = await skillsRes.json();
+        const experiencesData = await experiencesRes.json();
+        
+        // Process skills into categories
+        const processedSkills: SkillCategories = {
+          professional: skillsData.filter((s: any) => s.category === 'professional').map((s: any) => ({
+            icon: iconMap[s.icon] || FaUsers,
+            label: s.label || "",
+            iconSize: s.iconSize
+          })),
+          languages: skillsData.filter((s: any) => s.category === 'languages').map((s: any) => ({
+            icon: iconMap[s.icon] || FaPython,
+            label: s.label || "",
+            iconSize: s.iconSize
+          })),
+          technologies: skillsData.filter((s: any) => s.category === 'technologies').map((s: any) => ({
+            icon: iconMap[s.icon] || FaReact,
+            label: s.label || "",
+            iconSize: s.iconSize
+          })),
+        };
+        
+        // Only update state if we actually got data
+        if (processedSkills.professional.length || processedSkills.languages.length || processedSkills.technologies.length) {
+          setSkillCategories(processedSkills);
+        }
+        
+        // Process experiences into education and work
+        if (Array.isArray(experiencesData)) {
+          const educationData = experiencesData.filter((e: any) => e.type === 'education');
+          const workData = experiencesData.filter((e: any) => e.type === 'work');
+          
+          if (educationData.length) setEducation(educationData);
+          if (workData.length) setWork(workData);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        // Keep default data on error
+      }
+    }
+    
+    fetchData();
+  }, []);
+
   return (
     <div className="font-[family-name:var(--font-geist-sans)] min-h-screen relative overflow-hidden">
       <ParallaxLines opacity={0.4} strokeWidth={3} zIndex={5} />
@@ -92,7 +203,7 @@ export default function Home() {
               </h1>
               <div className="mt-4 inspectable">
                 <h2 className="text-xl mb-2 text-[var(--navitem-text)] inspectable">Information</h2>
-                <p className="text-lg mb-6 text-[var(--text-body)] mb-20 inspectable">
+                <p className="text-lg mb-6 text-[var(--text-body)] inspectable">
                   I'm a passionate web developer specializing in modern frontend technologies.
                   With expertise in React, Next.js, and TypeScript, I create responsive and
                   performant web applications. My focus is on clean code, intuitive UX, and
@@ -147,18 +258,29 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="bg-[var(--foreground)] p-6 rounded-lg">
+            <div className="bg-[var(--foreground)] opacity-90 p-6 rounded-lg">
               <h3 className="text-xl font-bold mb-4 text-[var(--navitem-text-hover)]">Education & Experience</h3>
-              <div className="mb-4 inspectable">
-                <div className="text-lg text-[var(--title)] inspectable">Computer Science</div>
-                <div className="text-[var(--text-body)] inspectable">Lapland University of Applied Sciences</div>
-                <div className="text-sm text-[var(--navitem-text)] inspectable">2023 - Present</div>
-              </div>
-              <div className="inspectable">
-                <div className="text-lg text-[var(--title)] inspectable">IT Intern</div>
-                <div className="text-[var(--text-body)] inspectable">Nordic Unique Travels</div>
-                <div className="text-sm text-[var(--navitem-text)] inspectable">2025</div>
-              </div>
+              {education.map((edu, idx) => (
+                <div key={edu.id || idx} className="mb-4 inspectable">
+                  <div className="text-lg text-[var(--title)] inspectable">{edu.title}</div>
+                  <div className="text-[var(--text-body)] inspectable">{edu.company}</div>
+                  <div className="text-sm text-[var(--navitem-text)] inspectable">{edu.period}</div>
+                  {edu.description && (
+                    <p className="text-sm mt-1 text-[var(--text-body)] inspectable">{edu.description}</p>
+                  )}
+                </div>
+              ))}
+              <h3 className="text-lg font-bold mt-6 mb-3 text-[var(--navitem-text-hover)]">Work Experience</h3>
+              {work.map((job, idx) => (
+                <div key={job.id || idx} className="inspectable">
+                  <div className="text-lg text-[var(--title)] inspectable">{job.title}</div>
+                  <div className="text-[var(--text-body)] inspectable">{job.company}</div>
+                  <div className="text-sm text-[var(--navitem-text)] inspectable">{job.period}</div>
+                  {job.description && (
+                    <p className="text-sm mt-1 text-[var(--text-body)] inspectable">{job.description}</p>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -254,16 +376,20 @@ export default function Home() {
           {/* Education & Experience section */}
           <div className="bg-[var(--foreground)] p-4 rounded-lg inspectable mb-5">
             <h3 className="text-lg font-bold mb-3 text-[var(--navitem-text-hover)] inspectable">Education & Experience</h3>
-            <div className="mb-4 inspectable">
-              <div className="text-lg text-[var(--title)] inspectable">Computer Science</div>
-              <div className="text-[var(--text-body)] inspectable">Lapland University of Applied Sciences</div>
-              <div className="text-sm text-[var(--navitem-text)] inspectable">2023 - Present</div>
-            </div>
-            <div className="inspectable">
-              <div className="text-lg text-[var(--title)] inspectable">IT Intern</div>
-              <div className="text-[var(--text-body)] inspectable">Nordic Unique Travels</div>
-              <div className="text-sm text-[var(--navitem-text)] inspectable">2025</div>
-            </div>
+            {education.map((edu, idx) => (
+              <div key={edu.id || idx} className="mb-4 inspectable">
+                <div className="text-lg text-[var(--title)] inspectable">{edu.title}</div>
+                <div className="text-[var(--text-body)] inspectable">{edu.company}</div>
+                <div className="text-sm text-[var(--navitem-text)] inspectable">{edu.period}</div>
+              </div>
+            ))}
+            {work.map((job, idx) => (
+              <div key={job.id || idx} className="inspectable">
+                <div className="text-lg text-[var(--title)] inspectable">{job.title}</div>
+                <div className="text-[var(--text-body)] inspectable">{job.company}</div>
+                <div className="text-sm text-[var(--navitem-text)] inspectable">{job.period}</div>
+              </div>
+            ))}
           </div>
         </div>
       </main>

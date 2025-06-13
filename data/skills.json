@@ -1,9 +1,124 @@
 [
   {
-    "id": "1e47d487-6374-46ba-91e4-5164059e70f9",
-    "icon": "FaCode",
-    "label": "nhj",
-    "category": "professional",
-    "iconSize": "text-sm"
+    "id": "prof-1",
+    "icon": "FaUsers",
+    "label": "Collaborative Development",
+    "category": "professional"
+  },
+  {
+    "id": "prof-2",
+    "icon": "FaPencilAlt",
+    "label": "UI/UX Design",
+    "category": "professional"
+  },
+  {
+    "id": "prof-3",
+    "icon": "FaLaptopCode",
+    "label": "Corporate IT Support",
+    "category": "professional"
+  },
+  {
+    "id": "prof-4",
+    "icon": "FaCube",
+    "label": "3D Modeling and Design",
+    "category": "professional"
+  },
+  {
+    "id": "lang-1",
+    "icon": "TbBrandCSharp",
+    "label": "",
+    "category": "languages",
+    "iconSize": "text-lg"
+  },
+  {
+    "id": "lang-2",
+    "icon": "FaPython",
+    "label": "Python",
+    "category": "languages"
+  },
+  {
+    "id": "lang-3",
+    "icon": "SiTypescript",
+    "label": "JavaScript/TypeScript",
+    "category": "languages"
+  },
+  {
+    "id": "lang-4",
+    "icon": "SiKotlin",
+    "label": "Kotlin",
+    "category": "languages"
+  },
+  {
+    "id": "lang-5",
+    "icon": "FaPhp",
+    "label": "PHP",
+    "category": "languages",
+    "iconSize": "text-xl"
+  },
+  {
+    "id": "lang-6",
+    "icon": "FaHtml5",
+    "label": "HTML",
+    "category": "languages"
+  },
+  {
+    "id": "lang-7",
+    "icon": "FaDatabase",
+    "label": "SQL",
+    "category": "languages"
+  },
+  {
+    "id": "tech-1",
+    "icon": "FaReact",
+    "label": "React/Next.js",
+    "category": "technologies"
+  },
+  {
+    "id": "tech-2",
+    "icon": "FaLaravel",
+    "label": "Laravel",
+    "category": "technologies"
+  },
+  {
+    "id": "tech-3",
+    "icon": "SiTailwindcss",
+    "label": "Tailwind CSS",
+    "category": "technologies"
+  },
+  {
+    "id": "tech-4",
+    "icon": "FaUnity",
+    "label": "Unity",
+    "category": "technologies"
+  },
+  {
+    "id": "tech-5",
+    "icon": "SiUnrealengine",
+    "label": "Unreal Engine",
+    "category": "technologies"
+  },
+  {
+    "id": "tech-6",
+    "icon": "FaGithub",
+    "label": "Github",
+    "category": "technologies"
+  },
+  {
+    "id": "tech-7",
+    "icon": "FaMicrochip",
+    "label": "ESP32",
+    "category": "technologies"
+  },
+  {
+    "id": "tech-8",
+    "icon": "FaAndroid",
+    "label": "Android Studio",
+    "category": "technologies"
+  },
+  {
+    "id": "tech-9",
+    "icon": "FaMobile",
+    "label": "Jetpack Compose",
+    "category": "technologies"
   }
 ]

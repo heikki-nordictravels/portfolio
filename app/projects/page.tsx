@@ -1,87 +1,87 @@
-"use client"
+"use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ParallaxLines from "../components/ParallaxLines";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import SkillTag from "../components/SkillTag";
 
 interface Project {
+    id?: string;
     title?: string;
     year?: string;
     description?: string;
     tools_used?: string[];
     image?: string;
     link?: string;
+    featured?: boolean;
 }
+
 interface AnimatedCardProps {
   children: React.ReactNode;
   direction?: "left" | "right";
   delay?: number;
 }
-// Animation component that slides in from left or right
-function AnimatedProjectCard({ children, direction = "left", delay = 0 }: AnimatedCardProps) {
-    const [ref, inView] = useInView({
-        triggerOnce: true,
-        threshold: 0.2,
-    });
 
+const AnimatedProjectCard: React.FC<AnimatedCardProps> = ({
+    children,
+    direction = "left",
+    delay = 0,
+}) => {
+    const xInitial = direction === "left" ? -100 : 100;
+    
     return (
         <motion.div
-            ref={ref}
-            initial={{ 
-                x: direction === "left" ? -100 : 100, 
-                opacity: 0 
+            initial={{ x: xInitial, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{
+                type: "spring",
+                stiffness: 260,
+                damping: 20,
+                delay: delay,
             }}
-            animate={inView ? { 
-                x: 0, 
-                opacity: 1 
-            } : {}}
-            transition={{ 
-                duration: 0.6, 
-                ease: "easeOut",
-                delay
-            }}
-            className="w-full"
         >
             {children}
         </motion.div>
     );
-}
+};
 
 export default function Projects() {
-    const projects: Project[] = [
-        {
-            title: "This website",
-            year: "2025",
-            description: "Made with love using React/Next.js. I used Figma to design the page layouts before implementation.",
-            tools_used: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Figma"]
-        }, {
-            title: "EcoMonitor",
-            year: "2025",
-            description: "An Android app for managing maintenance data for smart homes. I was partly responsible for programming the UI and viewmodel structure.",
-            tools_used: ["Android Studio", "Jetpack Compose", "Kotlin"],
-            image: "/images/ecomonitor.png"
-        }, {
-            title: "Zerowaste",
-            year: "2024",
-            description: `A rhythm sorting game made in Unity. Another school project where I:
-                            • Designed a custom 3D-printed controller
-                            • Created the game environment
-                            • Programmed gameplay mechanics`,
-            tools_used: ["C#", "Unity 3D", "Tinkercad", "Blockbench"],
-            image: "/images/zerowaste.png"
-        }, {
-            title: "Rogue Robot",
-            year: "2024",
-            description: "A physics-based driving game made with Unreal Engine 5\nMade in 2 months during a summer school project, I was responsible for programming and designing most of the UI, in addition to implementing gameplay systems such as progression and score.",
-            tools_used: ["Unreal 5", "Blueprint", "Blockbench"],
-            image: "/images/roguerobot.png",
-            link: "https://vege00.itch.io/roguerobot"
+    const [projects, setProjects] = useState<Project[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    // Fetch projects on component mount
+    useEffect(() => {
+        async function fetchProjects() {
+            try {
+                const response = await fetch('/api/projects');
+                const data = await response.json();
+                
+                // Sort projects by year (descending)
+                const sortedProjects = [...data].sort((a, b) => {
+                    return parseInt(b.year || '0') - parseInt(a.year || '0');
+                });
+                
+                setProjects(sortedProjects);
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            } finally {
+                setLoading(false);
+            }
         }
-    ];
+        
+        fetchProjects();
+    }, []);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="loader"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="projects inspectable font-[family-name:var(--font-geist-sans)] min-h-screen">

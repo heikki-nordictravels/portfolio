@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "id": "27821829-fa3f-4fe9-a207-31b2febb7e65",
+    "title": "Rogue Robot",
+    "year": "2024",
+    "description": "A physics-based driving game made with Unreal Engine 5\nMade in 2 months during a summer school project, I was responsible for programming and designing most of the UI, in addition to implementing gameplay systems such as progression and score.",
+    "tools_used": [
+      "Unreal 5",
+      "Blueprint",
+      "Blockbench"
+    ],
+    "featured": false,
+    "link": "https://vege00.itch.io/roguerobot",
+    "image": "/images/roguerobot.png"
+  },
+  {
+    "id": "proj-1",
+    "title": "This website",
+    "year": "2025",
+    "description": "Made with love using React/Next.js. I used Figma to design the page layouts before implementation.",
+    "tools_used": [
+      "React", 
+      "Next.js", 
+      "TypeScript", 
+      "Tailwind CSS", 
+      "Figma"
+    ],
+    "featured": true
+  },
+  {
+    "id": "proj-2",
+    "title": "EcoMonitor",
+    "year": "2025",
+    "description": "An Android app for managing maintenance data for smart homes. I was partly responsible for programming the UI and viewmodel structure.",
+    "tools_used": [
+      "Android Studio", 
+      "Jetpack Compose", 
+      "Kotlin"
+    ],
+    "image": "/images/ecomonitor.png",
+    "featured": true
+  },
+  {
+    "id": "proj-3",
+    "title": "Zerowaste",
+    "year": "2024",
+    "description": "A rhythm sorting game made in Unity. Another school project where I:\n• Designed a custom 3D-printed controller\n• Created the game environment\n• Programmed gameplay mechanics",
+    "tools_used": [
+      "C#", 
+      "Unity 3D", 
+      "Tinkercad", 
+      "Blockbench"
+    ],
+    "image": "/images/zerowaste.png",
+    "featured": false
+  }
+]

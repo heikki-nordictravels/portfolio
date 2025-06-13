@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getExperiences, saveExperiences } from "@/lib/data";
 import { Experience } from "@/lib/models";
 
-// Get all experiences
+// Get all experiences for admin
 export async function GET() {
   const result = await getExperiences();
   
@@ -67,13 +67,14 @@ export async function POST(request: NextRequest) {
     
     if (!saveResult.success) {
       return NextResponse.json(
-        { error: "Failed to save experiences", success: false },
+        { error: saveResult.error || "Failed to save experiences", success: false },
         { status: 500 }
       );
     }
     
     return NextResponse.json({ success: true });
   } catch (error: any) {
+    console.error("Error in POST /api/admin/experiences:", error);
     return NextResponse.json(
       { error: `Error processing request: ${error.message}`, success: false },
       { status: 500 }
@@ -119,13 +120,14 @@ export async function DELETE(request: NextRequest) {
     
     if (!saveResult.success) {
       return NextResponse.json(
-        { error: "Failed to save experiences", success: false },
+        { error: saveResult.error || "Failed to save experiences", success: false },
         { status: 500 }
       );
     }
     
     return NextResponse.json({ success: true });
   } catch (error: any) {
+    console.error("Error in DELETE /api/admin/experiences:", error);
     return NextResponse.json(
       { error: `Error processing request: ${error.message}`, success: false },
       { status: 500 }
