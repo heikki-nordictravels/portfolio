@@ -123,7 +123,7 @@ export default function SkillsManagement() {
                 iconSize: "text-sm",
               });
             }}
-            className="action-button py-2 px-4 rounded text-white"
+            className="action-button cursor-pointer hover:text-[var(--navitem-text-hover)] py-2 px-4 rounded text-white"
             disabled={isEditing}
           >
             Add New Skill
@@ -149,13 +149,13 @@ export default function SkillsManagement() {
                         setIsEditing(true);
                         setCurrentSkill(skill);
                       }}
-                      className="p-2 text-blue-500 hover:text-blue-700"
+                      className="p-2 cursor-pointer hover:bg-[var(--ripple-color)] rounded text-blue-500 hover:text-blue-700"
                     >
                       ✏️
                     </button>
                     <button
                       onClick={() => handleDelete(skill.id)}
-                      className="p-2 text-red-500 hover:text-red-700"
+                      className="p-2 text-red-500 cursor-pointer hover:bg-[var(--ripple-color)] rounded hover:text-red-700"
                     >
                       🗑️
                     </button>

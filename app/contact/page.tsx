@@ -78,6 +78,7 @@ export default function Contact() {
               <Link 
                 href="/uploads/cv.pdf" 
                 className="text-center w-full inspectable text-lg block p-3 rounded text-[var(--navitem-text)] hover:text-[var(--navitem-text-hover)] transition-colors" 
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <u>Check out my CV</u>

@@ -135,10 +135,10 @@ export default function ProjectsManagement() {
                 featured: false
               });
             }}
-            className="action-button py-2 px-4 rounded text-white"
+            className="action-button cursor-pointer hover:text-[var(--navitem-text-hover)] py-2 px-4 rounded text-white"
             disabled={isEditing}
           >
-            Add New Project
+           + Add New Project
           </button>
         </div>
 
@@ -326,7 +326,7 @@ function ProjectCard({
   onDelete: () => void;
 }) {
   return (
-    <div className={`bg-[var(--foreground)] p-6 rounded-lg shadow ${project.featured ? 'border-2 border-blue-500' : ''}`}>
+    <div className={"bg-[var(--foreground)] p-6 rounded-lg shadow"}>
       <div className="flex justify-between items-start mb-4">
         <div>
           <div className="flex items-center">
@@ -334,7 +334,7 @@ function ProjectCard({
               {project.title}
             </h3>
             {project.featured && (
-              <span className="ml-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
+              <span className="ml-2 bg-blue-700 text-white text-xs px-2 py-1 rounded-full">
                 Featured
               </span>
             )}
@@ -344,13 +344,13 @@ function ProjectCard({
         <div className="flex space-x-2">
           <button
             onClick={onEdit}
-            className="p-2 text-blue-500 hover:text-blue-700"
+            className="p-2 cursor-pointer hover:bg-[var(--ripple-color)] rounded text-blue-500 hover:text-blue-700"
           >
             ✏️
           </button>
           <button
             onClick={onDelete}
-            className="p-2 text-red-500 hover:text-red-700"
+            className="p-2 cursor-pointer hover:bg-[var(--ripple-color)] rounded text-red-500 hover:text-red-700"
           >
             🗑️
           </button>
