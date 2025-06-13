@@ -1,5 +1,12 @@
 "use client"
 
+/**
+ * This component uses react-sidebar (with modifications)
+ * Copyright (c) 2015 Paulus Schoutsen
+ * Licensed under MIT License
+ * https://github.com/balloob/react-sidebar
+ */
+
 import RippleLink from '../components/RippleLink';
 import React from "react";
 import dynamic from 'next/dynamic';

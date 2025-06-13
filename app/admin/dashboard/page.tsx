@@ -46,7 +46,7 @@ export default function Dashboard() {
               await fetch("/api/auth/logout", { method: "POST" });
               window.location.href = "/admin/login";
             }}
-            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+            className="cursor-pointer bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
           >
             Logout
           </button>
@@ -79,7 +79,7 @@ function DashboardCard({ title, count, href }: { title: string; count: number; h
   return (
     <Link 
       href={href}
-      className="bg-[var(--foreground)] p-6 rounded-lg shadow hover:shadow-lg transition-shadow"
+      className="bg-[var(--foreground)] p-6 rounded-lg shadow hover:bg-[var(--navitem-bg-hover)]  transition-shadow"
     >
       <h2 className="text-xl font-bold mb-2 text-[var(--navitem-text-hover)]">{title}</h2>
       <div className="flex items-center justify-between">

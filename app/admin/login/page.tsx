@@ -58,7 +58,7 @@ export default function AdminLogin() {
         
         <button
           type="submit"
-          className="action-button w-full py-2 px-4 rounded text-white"
+          className="action-button cursor-pointer hover:text-[var(--text-title)] w-full py-2 px-4 rounded text-white"
         >
           Login
         </button>

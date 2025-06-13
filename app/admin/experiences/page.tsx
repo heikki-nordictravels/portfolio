@@ -93,7 +93,7 @@ export default function ExperiencesManagement() {
       <div className="max-w-6xl mx-auto px-6 py-12">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <Link href="/admin/dashboard" className="text-[var(--navitem-text)] hover:text-[var(--navitem-text-hover)]">
+            <Link href="/admin/dashboard" className="text-[var(--navitem-text)] hover:text-[var(--text-title)]">
               ← Back to Dashboard
             </Link>
             <h1 className="text-3xl font-bold text-[var(--title)] mt-2">Manage Experiences</h1>
@@ -110,7 +110,7 @@ export default function ExperiencesManagement() {
                 description: "",
               });
             }}
-            className="action-button py-2 px-4 rounded text-white"
+            className="action-button cursor-pointer hover:text-[var(--text-title)] py-2 px-4 rounded text-white"
             disabled={isEditing}
           >
             Add New Experience
@@ -254,13 +254,13 @@ export default function ExperiencesManagement() {
                       setIsEditing(false);
                       setCurrentExperience(null);
                     }}
-                    className="px-4 py-2 border border-gray-300 rounded text-[var(--text-body)] hover:bg-[var(--foreground)]"
+                    className="px-4 cursor-pointer py-2 border border-gray-300 rounded text-[var(--text-body)] hover:bg-[var(--foreground)]"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="action-button px-4 py-2 rounded text-white"
+                    className="action-button cursor-pointer px-4 py-2 rounded text-white"
                   >
                     Save
                   </button>
@@ -297,13 +297,13 @@ function ExperienceCard({
         <div className="flex space-x-2">
           <button
             onClick={onEdit}
-            className="p-2 text-blue-500 hover:text-blue-700"
+            className="p-2 cursor-pointer text-blue-500 rounded hover:bg-[var(--ripple-color)]"
           >
             ✏️
           </button>
           <button
             onClick={onDelete}
-            className="p-2 text-red-500 hover:text-red-700"
+            className="p-2 cursor-pointer text-red-500 hover:text-red-700 rounded hover:bg-[var(--ripple-color)]"
           >
             🗑️
           </button>
