@@ -13,7 +13,7 @@ import {
   FaArrowRight, FaUsers, FaPencilAlt, FaLaptopCode, FaCube,
   FaPython, FaReact, FaPhp, FaHtml5, FaDatabase,
   FaLaravel, FaUnity, FaMicrochip, FaAndroid, 
-  FaMobile, FaGithub
+  FaMobile, FaGithub, FaCloudflare, FaCpanel
 } from "react-icons/fa";
 import { SiKotlin, SiTypescript, SiTailwindcss, SiUnrealengine } from "react-icons/si";
 import { TbBrandCSharp } from "react-icons/tb";
@@ -64,6 +64,8 @@ const iconMap: Record<string, IconType> = {
   "FaMicrochip": FaMicrochip,
   "FaAndroid": FaAndroid,
   "FaMobile": FaMobile,
+  "FaCloudflare": FaCloudflare,
+  "FaCpanel": FaCpanel
 };
 
 // Define fallback skill categories

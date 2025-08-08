@@ -30,6 +30,7 @@ export type Project = {
   image?: string;
   link?: string;
   featured?: boolean;
+  displayOrder?: number; 
 };
 
 // Responses for API endpoints

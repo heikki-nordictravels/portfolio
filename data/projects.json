@@ -1,5 +1,53 @@
 [
   {
+    "id": "9e4db462-d198-4564-b910-e9ac567d7084",
+    "title": "Aito Resort Guest information centre",
+    "year": "2025",
+    "description": "My first official production project - I built a mobile-oriented information portal website for resort guests. With a React frontend and a backend admin dashboard using Laravel's authentication and database management, this full stack project took me most of the duration of my internship at Nordic Unique Travels. The site is hosted on cPanel with routing through Cloudflare.",
+    "tools_used": [
+      "React",
+      "Next.js",
+      "Laravel",
+      "cPanel",
+      "Cloudflare",
+      "TypeScript",
+      "Figma"
+    ],
+    "image": "/images/resort.png",
+    "featured": true,
+    "link": "https://portal.aitoresort.com/en",
+    "displayOrder": 1
+  },
+  {
+    "id": "proj-1",
+    "title": "This website",
+    "year": "2025",
+    "description": "Made with love using React/Next.js. I used Figma to design the page layouts before implementation.",
+    "tools_used": [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Figma"
+    ],
+    "featured": false,
+    "displayOrder": 2
+  },
+  {
+    "id": "proj-2",
+    "title": "EcoMonitor",
+    "year": "2025",
+    "description": "An Android app for managing maintenance data for smart homes. I was partly responsible for programming the UI and viewmodel structure.",
+    "tools_used": [
+      "Android Studio",
+      "Jetpack Compose",
+      "Kotlin"
+    ],
+    "image": "/images/ecomonitor.png",
+    "featured": false,
+    "displayOrder": 3
+  },
+  {
     "id": "27821829-fa3f-4fe9-a207-31b2febb7e65",
     "title": "Rogue Robot",
     "year": "2024",
@@ -11,34 +59,8 @@
     ],
     "featured": false,
     "link": "https://vege00.itch.io/roguerobot",
-    "image": "/images/roguerobot.png"
-  },
-  {
-    "id": "proj-1",
-    "title": "This website",
-    "year": "2025",
-    "description": "Made with love using React/Next.js. I used Figma to design the page layouts before implementation.",
-    "tools_used": [
-      "React", 
-      "Next.js", 
-      "TypeScript", 
-      "Tailwind CSS", 
-      "Figma"
-    ],
-    "featured": true
-  },
-  {
-    "id": "proj-2",
-    "title": "EcoMonitor",
-    "year": "2025",
-    "description": "An Android app for managing maintenance data for smart homes. I was partly responsible for programming the UI and viewmodel structure.",
-    "tools_used": [
-      "Android Studio", 
-      "Jetpack Compose", 
-      "Kotlin"
-    ],
-    "image": "/images/ecomonitor.png",
-    "featured": true
+    "image": "/images/roguerobot.png",
+    "displayOrder": 4
   },
   {
     "id": "proj-3",
@@ -46,12 +68,13 @@
     "year": "2024",
     "description": "A rhythm sorting game made in Unity. Another school project where I:\n• Designed a custom 3D-printed controller\n• Created the game environment\n• Programmed gameplay mechanics",
     "tools_used": [
-      "C#", 
-      "Unity 3D", 
-      "Tinkercad", 
+      "C#",
+      "Unity 3D",
+      "Tinkercad",
       "Blockbench"
     ],
     "image": "/images/zerowaste.png",
-    "featured": false
+    "featured": false,
+    "displayOrder": 5
   }
 ]

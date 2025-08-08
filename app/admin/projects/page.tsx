@@ -14,6 +14,7 @@ type Project = {
   image?: string;
   link?: string;
   featured?: boolean;
+  displayOrder?: number;
 };
 
 export default function ProjectsManagement() {
@@ -132,7 +133,8 @@ export default function ProjectsManagement() {
                 year: new Date().getFullYear().toString(),
                 description: "",
                 tools_used: [],
-                featured: false
+                featured: false,
+                displayOrder: projects.length + 1
               });
             }}
             className="action-button cursor-pointer hover:text-[var(--navitem-text-hover)] py-2 px-4 rounded text-white"
@@ -197,6 +199,22 @@ export default function ProjectsManagement() {
                     placeholder="2023"
                     required
                   />
+                </div>
+                
+                {/* Display Order */}
+                <div className="mb-4">
+                  <label className="block mb-2 text-[var(--text-body)]">Display Order</label>
+                  <input
+                    type="number"
+                    value={currentProject.displayOrder || ''}
+                    onChange={(e) => setCurrentProject({...currentProject, displayOrder: e.target.value ? parseInt(e.target.value) : undefined})}
+                    className="w-full px-3 py-2 bg-[var(--foreground)] border rounded text-[var(--text-body)]"
+                    placeholder="1"
+                    min="1"
+                  />
+                  <p className="text-xs text-[var(--text-muted)] mt-1">
+                    Lower numbers appear first. Leave empty to sort by year instead.
+                  </p>
                 </div>
                 
                 {/* Description */}
@@ -339,7 +357,14 @@ function ProjectCard({
               </span>
             )}
           </div>
-          <p className="text-sm text-[var(--text-muted)]">{project.year}</p>
+          <div className="flex items-center gap-2">
+            <p className="text-sm text-[var(--text-muted)]">{project.year}</p>
+            {project.displayOrder && (
+              <span className="text-xs bg-[var(--background)] px-2 py-1 rounded text-[var(--text-muted)]">
+                Order: {project.displayOrder}
+              </span>
+            )}
+          </div>
         </div>
         <div className="flex space-x-2">
           <button

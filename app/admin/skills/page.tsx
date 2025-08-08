@@ -27,10 +27,10 @@ export default function SkillsManagement() {
   useEffect(() => {
     async function fetchSkills() {
       try {
-        const response = await fetch("/api/skills");
+        const response = await fetch("/api/admin/skills");
         if (!response.ok) throw new Error("Failed to fetch skills");
         const data = await response.json();
-        setSkills(data);
+        setSkills(data.data); // Note: admin endpoint returns {data: skills, success: true}
       } catch (error) {
         console.error("Error fetching skills:", error);
       } finally {
@@ -47,7 +47,7 @@ export default function SkillsManagement() {
     if (!currentSkill) return;
     
     try {
-      const response = await fetch("/api/skills", {
+      const response = await fetch("/api/admin/skills", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(currentSkill),
@@ -56,9 +56,9 @@ export default function SkillsManagement() {
       if (!response.ok) throw new Error("Failed to save skill");
       
       // Refresh skills list
-      const updatedResponse = await fetch("/api/skills");
+      const updatedResponse = await fetch("/api/admin/skills");
       const updatedSkills = await updatedResponse.json();
-      setSkills(updatedSkills);
+      setSkills(updatedSkills.data); // Note: admin endpoint returns {data: skills, success: true}
       
       // Reset form
       setIsEditing(false);
@@ -73,7 +73,7 @@ export default function SkillsManagement() {
     if (!confirm("Are you sure you want to delete this skill?")) return;
     
     try {
-      const response = await fetch(`/api/skills?id=${id}`, {
+      const response = await fetch(`/api/admin/skills?id=${id}`, {
         method: "DELETE",
       });
       

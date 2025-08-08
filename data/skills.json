@@ -74,12 +74,6 @@
     "category": "technologies"
   },
   {
-    "id": "tech-2",
-    "icon": "FaLaravel",
-    "label": "Laravel",
-    "category": "technologies"
-  },
-  {
     "id": "tech-3",
     "icon": "SiTailwindcss",
     "label": "Tailwind CSS",
@@ -120,5 +114,26 @@
     "icon": "FaMobile",
     "label": "Jetpack Compose",
     "category": "technologies"
+  },
+  {
+    "id": "a1fced9e-7524-4841-9375-695f7ee16c28",
+    "icon": "FaLaravel",
+    "label": "Laravel",
+    "category": "technologies",
+    "iconSize": "text-sm"
+  },
+  {
+    "id": "e224f82c-a5b3-440c-b70c-ad8b78799f59",
+    "icon": "FaCloudflare",
+    "label": "Cloudflare",
+    "category": "technologies",
+    "iconSize": "text-sm"
+  },
+  {
+    "id": "ef68480d-7e9d-4a17-b857-b213a6e3541b",
+    "icon": "FaCpanel",
+    "label": "cPanel",
+    "category": "technologies",
+    "iconSize": "text-2xl"
   }
 ]

@@ -16,6 +16,7 @@ interface Project {
     image?: string;
     link?: string;
     featured?: boolean;
+    displayOrder?: number;
 }
 
 interface AnimatedCardProps {
@@ -59,8 +60,16 @@ export default function Projects() {
                 const response = await fetch('/api/projects');
                 const data = await response.json();
                 
-                // Sort projects by year (descending)
+                // Sort projects by display order (ascending), with fallback to year (descending)
                 const sortedProjects = [...data].sort((a, b) => {
+                    // If both have displayOrder, sort by that
+                    if (a.displayOrder !== undefined && b.displayOrder !== undefined) {
+                        return a.displayOrder - b.displayOrder;
+                    }
+                    // If only one has displayOrder, prioritize it
+                    if (a.displayOrder !== undefined) return -1;
+                    if (b.displayOrder !== undefined) return 1;
+                    // If neither has displayOrder, fallback to year sorting
                     return parseInt(b.year || '0') - parseInt(a.year || '0');
                 });
                 
@@ -189,7 +198,7 @@ export default function Projects() {
                                                     </a>
                                                 )}
                                                 {project.image && (
-                                                    <div className="inspectable w-full h-32 mt-2 bg-[var(--background)] rounded overflow-hidden flex items-center justify-center">
+                                                    <div className="inspectable w-full h-full mt-2 bg-[var(--background)] rounded overflow-hidden flex items-center justify-center">
                                                         <Image
                                                             src={project.image}
                                                             alt={project.title || "Project image"}
