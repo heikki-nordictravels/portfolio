@@ -13,7 +13,7 @@
       "TypeScript",
       "Figma"
     ],
-    "image": "/portfolio/public/images/resort.png",
+    "image": "/portfolio/images/resort.png",
     "featured": true,
     "link": "https://portal.aitoresort.com/en",
     "displayOrder": 1
@@ -43,7 +43,7 @@
       "Jetpack Compose",
       "Kotlin"
     ],
-    "image": "/portfolio/public/images/ecomonitor.png",
+    "image": "/portfolio/images/ecomonitor.png",
     "featured": false,
     "displayOrder": 3
   },
@@ -59,7 +59,7 @@
     ],
     "featured": false,
     "link": "https://vege00.itch.io/roguerobot",
-    "image": "/portfolio/public/images/roguerobot.png",
+    "image": "/portfolio/images/roguerobot.png",
     "displayOrder": 4
   },
   {
@@ -73,7 +73,7 @@
       "Tinkercad",
       "Blockbench"
     ],
-    "image": "/portfolio/public/images/zerowaste.png",
+    "image": "/portfolio/images/zerowaste.png",
     "featured": false,
     "displayOrder": 5
   }

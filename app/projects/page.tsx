@@ -72,7 +72,6 @@ export default function Projects() {
                     // If neither has displayOrder, fallback to year sorting
                     return parseInt(b.year || '0') - parseInt(a.year || '0');
                 });
-                
                 setProjects(sortedProjects);
             } catch (error) {
                 console.error("Error fetching projects:", error);
