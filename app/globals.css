@@ -7,7 +7,6 @@
   --primary: #4996A6;
   --text-body: #3e99c0;
   --title: #11DFC6;
-  --debugred: #d10f0f;
   --inspector-text: #16be9a;
   --bg-lines: #184234;
 
@@ -38,9 +37,6 @@
   text-underline-offset: 30%;
 }
 
-
-
-
 main {
   flex: 1 0 auto;
   min-height: calc(100vh - 145px); /* 85px header + 60px footer */
@@ -67,17 +63,17 @@ body {
     padding-right: auto;
     padding-top: 3%;
     font-weight: bold;
-    font-size: 52;
+    font-size: 45px;
   }
 }
 .contacts{
   h1{
-    font-size: 52;
+    font-size: 52px;
     font-weight: bold;
   }
 }
 .project-year{
-  font-size: 30;
+  font-size: 30px;
 }
 .mobile-project-separator{
   color: var(--mobile-project-separator);
@@ -94,7 +90,7 @@ body {
   color: var(--project-dot);
   background-color: var(--project-dot);
   border-color: var(--project-dot-border);
-  border-width: 3;
+  border-width: 3px;
 }
 .text-xs{
   color: var(--project-tools);
@@ -107,7 +103,6 @@ body {
 }
 
 .contact-methods{
-  
   .contact-card{
     border-radius: 30px;
     background-color: var(--contact-card);
@@ -146,7 +141,7 @@ body {
       scale: 2.5;
     }
     .text-title {
-      font-size: 38;
+      font-size: 35px;
       color: var(--title);
       align-self: center;
       margin-left: 5%;
@@ -160,7 +155,7 @@ body {
     align-items: stretch;
     
     .text-title {
-        font-size: 50;
+        font-size: 50px;
         color: var(--title);
         width: 40%;
         align-self: center;

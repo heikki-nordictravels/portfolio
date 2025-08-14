@@ -1,0 +1,19 @@
+[
+  {
+    "id": "282c6725-bade-49b7-a656-f898ee5729de",
+    "title": "IT Intern",
+    "company": "Nordic Unique Travels",
+    "period": "2025",
+    "type": "work",
+    "description": "Learned web development in a multinational team, and collaborated on several web projects."
+  },
+  {
+    "id": "edu-1",
+    "title": "Computer Science",
+    "company": "Lapland University of Applied Sciences",
+    "period": "2023 - 2027",
+    "type": "education",
+    "description": "Bachelor's degree with focus on software development and game programming."
+  }
+
+]

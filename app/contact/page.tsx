@@ -8,6 +8,7 @@ import { FaInstagram, FaLinkedin, FaRegEnvelope, FaPhone, FaFilePdf} from 'react
 export default function Contact() {
   return (
     <div className="contacts font-[family-name:var(--font-geist-sans)] min-h-screen relative">
+      <title>Contact</title>
       <ParallaxLines opacity={0.4} strokeWidth={3} zIndex={5} />
       <Header/>      
       <main className="relative z-10 flex flex-col gap-[32px] row-start-2 sm:items-start">

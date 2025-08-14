@@ -93,7 +93,9 @@ export default function Projects() {
     }
 
     return (
+        
         <div className="projects inspectable font-[family-name:var(--font-geist-sans)] min-h-screen">
+            <title>Projects</title>
             <ParallaxLines opacity={0.4} strokeWidth={3} zIndex={5} />
             <Header/>
             <h1 className="inspectable z-10 relative">Things I&apos;ve done </h1>
@@ -175,7 +177,7 @@ export default function Projects() {
                                         <AnimatedProjectCard direction="left" delay={idx * 0.1}>
                                             <div className="inspectable max-w-md rounded-lg shadow-lg p-6 flex flex-col gap-2 text-left">
                                                 <div className="inspectable flex items-center gap-4 mb-1">
-                                                    <span className="inspectable text-lg text-title font-semibold">{project.title}</span>
+                                                    <span className="inspectable text-xl text-title font-semibold">{project.title}</span>
                                                 </div>
                                                 <div className="inspectable whitespace-pre-line mb-2">{project.description}</div>
                                                 {project.tools_used && (
@@ -238,7 +240,7 @@ export default function Projects() {
                                         <AnimatedProjectCard direction="right" delay={idx * 0.1}>
                                             <div className="max-w-md rounded-lg shadow-lg p-1 flex flex-col gap-2 text-left">
                                                 <div className="flex items-center gap-4 mb-1">
-                                                    <span className="text-lg text-title font-semibold">{project.title}</span>
+                                                    <span className="text-xl text-title font-semibold">{project.title}</span>
                                                 </div>
                                                 <div className="whitespace-pre-line mb-2">{project.description}</div>
                                                 {project.tools_used && (

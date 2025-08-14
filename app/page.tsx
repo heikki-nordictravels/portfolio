@@ -163,6 +163,7 @@ export default function Home() {
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)] min-h-screen relative overflow-hidden">
+      <title>*THE* Portfolio</title>
       <ParallaxLines opacity={0.4} strokeWidth={3} zIndex={5} />
 
       <Header />
@@ -182,7 +183,7 @@ export default function Home() {
                       alt="miau"
                       width={35}
                       height={35}
-                      className="inspectable unoptimized"
+                      className="inspectable"
                     />
                   </div>
                   <div className="inspectable w-full flex justify-center">
