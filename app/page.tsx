@@ -178,7 +178,7 @@ export default function Home() {
                 <div className="flex flex-col items-center justify-center h-full p-4 inspectable">
                   <div className="flex items-center justify-center text-white text-xl mb-3 inspectable">
                     <Image
-                      src={"/images/tenna.gif"}
+                      src={"/portfolio/images/tenna.gif"}
                       alt="miau"
                       width={35}
                       height={35}
@@ -187,7 +187,7 @@ export default function Home() {
                   </div>
                   <div className="inspectable w-full flex justify-center">
                     <Image
-                      src={"/images/eror.png"}
+                      src={"/portfolio/images/eror.png"}
                       alt="Your image for experiencing technical difficulties is experiencing some technical difficulties"
                       width={150}
                       height={80}
@@ -295,14 +295,14 @@ export default function Home() {
             <div className="w-30 h-auto bg-[#071512] rounded-lg overflow-hidden flex-shrink-0 p-2">
               <div className="flex flex-col items-center justify-center inspectable">
                 <Image
-                  src={"/images/tenna.gif"}
+                  src={"/portfolio/images/tenna.gif"}
                   alt="miau"
                   width={25}
                   height={25}
                   className="inspectable mb-2"
                 />
                 <Image
-                  src={"/images/eror.png"}
+                  src={"/portfolio/images/eror.png"}
                   alt="Technical difficulties"
                   width={80}
                   height={35}
@@ -395,7 +395,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-
       <Footer />
     </div>
   );

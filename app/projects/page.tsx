@@ -57,7 +57,7 @@ export default function Projects() {
     useEffect(() => {
         async function loadProjects() {
             try {
-                const response = await fetch('/data/projects.json');
+                const response = await fetch('/portfolio/data/projects.json');
                 const data = await response.json();
                 
                 // Sort projects by display order (ascending), with fallback to year (descending)
