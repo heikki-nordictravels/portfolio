@@ -99,6 +99,7 @@ const defaultSkillCategories: SkillCategories = {
 };
 
 export default function Home() {
+  
   const [skillCategories, setSkillCategories] = useState<SkillCategories>(defaultSkillCategories);
   const [education, setEducation] = useState<Experience[]>([
     { id: "edu-default", title: "Computer Science", company: "Lapland University of Applied Sciences", period: "2023 - Present" }
@@ -106,9 +107,10 @@ export default function Home() {
   const [work, setWork] = useState<Experience[]>([
     { id: "work-default", title: "IT Intern", company: "Nordic Unique Travels", period: "2025" }
   ]);
-
-  // Load data directly from JSON files for static export
+  
   useEffect(() => {
+  // <title> gets overridden by layout, so declare it here instead
+  document.title = '*THE* Portfolio';
     async function loadData() {
       try {
         // Load skills and experiences from JSON files
@@ -162,7 +164,6 @@ export default function Home() {
 
   return (
     <div className="font-[family-name:var(--font-geist-sans)] min-h-screen relative overflow-hidden">
-      <title>*THE* Portfolio</title>
       <ParallaxLines opacity={0.4} strokeWidth={3} zIndex={5} />
       <Header />
       <main className="relative z-15 flex flex-col gap-[32px] px-6 md:px-12 max-w-400 mx-auto mt-12">
