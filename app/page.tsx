@@ -113,8 +113,8 @@ export default function Home() {
       try {
         // Load skills and experiences from JSON files
         const [skillsRes, experiencesRes] = await Promise.all([
-          fetch('/data/skills.json'),
-          fetch('/data/experiences.json')
+          fetch('/portfolio/data/skills.json'),
+          fetch('/portfolio/data/experiences.json')
         ]);
         
         const skillsData = await skillsRes.json();
@@ -165,7 +165,6 @@ export default function Home() {
     <div className="font-[family-name:var(--font-geist-sans)] min-h-screen relative overflow-hidden">
       <title>*THE* Portfolio</title>
       <ParallaxLines opacity={0.4} strokeWidth={3} zIndex={5} />
-
       <Header />
       <main className="relative z-15 flex flex-col gap-[32px] px-6 md:px-12 max-w-400 mx-auto mt-12">
 
