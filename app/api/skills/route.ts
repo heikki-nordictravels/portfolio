@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSkills, saveSkills } from "@/lib/data";
 
+export const dynamic = 'force-dynamic';
+
 // Public endpoint to retrieve skills for the frontend
 export async function GET() {
   const result = await getSkills();
@@ -69,16 +71,11 @@ export async function POST(request: NextRequest) {
     }
     
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in POST /api/skills:", error);
     return NextResponse.json(
-      { error: `Error processing request: ${error.message}`, success: false },
+      { error: `Error processing request: ${error instanceof Error ? error.message : 'Unknown error'}`, success: false },
       { status: 500 }
     );
   }
-}
-
-// Also fix the delete method...
-export async function DELETE(request: NextRequest) {
-  // Similar implementation with proper error handling and returns
 }

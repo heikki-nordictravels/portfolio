@@ -122,17 +122,17 @@ export default function Home() {
         
         // Process skills into categories
         const processedSkills: SkillCategories = {
-          professional: skillsData.filter((s: any) => s.category === 'professional').map((s: any) => ({
+          professional: skillsData.filter((s: { category: string }) => s.category === 'professional').map((s: { icon: string; label?: string; iconSize?: string }) => ({
             icon: iconMap[s.icon] || FaUsers,
             label: s.label || "",
             iconSize: s.iconSize
           })),
-          languages: skillsData.filter((s: any) => s.category === 'languages').map((s: any) => ({
+          languages: skillsData.filter((s: { category: string }) => s.category === 'languages').map((s: { icon: string; label?: string; iconSize?: string }) => ({
             icon: iconMap[s.icon] || FaPython,
             label: s.label || "",
             iconSize: s.iconSize
           })),
-          technologies: skillsData.filter((s: any) => s.category === 'technologies').map((s: any) => ({
+          technologies: skillsData.filter((s: { category: string }) => s.category === 'technologies').map((s: { icon: string; label?: string; iconSize?: string }) => ({
             icon: iconMap[s.icon] || FaReact,
             label: s.label || "",
             iconSize: s.iconSize
@@ -146,8 +146,8 @@ export default function Home() {
         
         // Process experiences into education and work
         if (Array.isArray(experiencesData)) {
-          const educationData = experiencesData.filter((e: any) => e.type === 'education');
-          const workData = experiencesData.filter((e: any) => e.type === 'work');
+          const educationData = experiencesData.filter((e: { type: string }) => e.type === 'education');
+          const workData = experiencesData.filter((e: { type: string }) => e.type === 'work');
           
           if (educationData.length) setEducation(educationData);
           if (workData.length) setWork(workData);
@@ -206,7 +206,7 @@ export default function Home() {
               <div className="mt-4 inspectable">
                 <h2 className="text-xl mb-2 text-[var(--navitem-text)] inspectable">Information</h2>
                 <p className="text-lg mb-6 text-[var(--text-body)] inspectable">
-                  I'm a passionate web developer specializing in modern frontend technologies.
+                  I&apos;m a passionate web developer specializing in modern frontend technologies.
                   With expertise in React, Next.js, and TypeScript, I create responsive and
                   performant web applications. My focus is on clean code, intuitive UX, and
                   innovative solutions to complex problems.
@@ -320,7 +320,7 @@ export default function Home() {
           <div className="mb-8 inspectable">
             <h2 className="text-lg mb-2 text-[var(--navitem-text)] inspectable">Information</h2>
             <p className="text-base mb-6 text-[var(--text-body)] inspectable">
-              I'm a passionate web developer specializing in modern frontend technologies.
+              I&apos;m a passionate web developer specializing in modern frontend technologies.
               With expertise in React, Next.js, and TypeScript, I create responsive and
               performant web applications.
             </p>

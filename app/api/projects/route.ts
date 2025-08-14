@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { getProjects } from "@/lib/data";
 
+export const dynamic = 'force-dynamic';
+
 // Public endpoint to retrieve projects for the frontend
 export async function GET() {
   const result = await getProjects();

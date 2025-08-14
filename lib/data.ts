@@ -10,12 +10,13 @@ const dataDirectory = path.join(process.cwd(), 'data');
 async function ensureDataDirectory() {
   try {
     await fs.access(dataDirectory);
-  } catch (error) {
+  } catch (error: Error | unknown) {
+    console.log("Error accessing directory: ", error)
     try {
       await fs.mkdir(dataDirectory, { recursive: true });
-    } catch (mkdirError: any) {
+    } catch (mkdirError: Error | unknown) {
       console.error("Error creating data directory:", mkdirError);
-      throw new Error(`Could not create data directory: ${mkdirError.message}`);
+      throw new Error(`Could not create data directory: ${mkdirError}`);
     }
   }
 }
@@ -32,8 +33,8 @@ export async function getData<T>(filename: string, defaultData: T[]): Promise<Ap
         data: JSON.parse(fileData),
         success: true
       };
-    } catch (error: any) {
-      if (error.code === 'ENOENT') {
+    } catch (error: unknown) {
+      if ((error as NodeJS.ErrnoException)?.code === 'ENOENT') {
         // File doesn't exist, create it with default data
         try {
           await fs.writeFile(filePath, JSON.stringify(defaultData, null, 2), 'utf8');
@@ -41,10 +42,10 @@ export async function getData<T>(filename: string, defaultData: T[]): Promise<Ap
             data: defaultData,
             success: true
           };
-        } catch (writeError: any) {
+        } catch (writeError: unknown) {
           console.error(`Error creating ${filename}.json:`, writeError);
           return {
-            error: `Failed to create file: ${writeError.message}`,
+            error: `Failed to create file: ${writeError instanceof Error ? writeError.message : 'Unknown error'}`,
             success: false
           };
         }
@@ -52,14 +53,14 @@ export async function getData<T>(filename: string, defaultData: T[]): Promise<Ap
       
       console.error(`Error reading ${filename}.json:`, error);
       return {
-        error: `Failed to read data: ${error.message}`,
+        error: `Failed to read data: ${error instanceof Error ? error.message : 'Unknown error'}`,
         success: false
       };
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`General error accessing data:`, error);
     return {
-      error: `Error accessing data: ${error.message}`,
+      error: `Error accessing data: ${error instanceof Error ? error.message : 'Unknown error'}`,
       success: false
     };
   }
@@ -78,17 +79,17 @@ export async function saveData<T>(filename: string, data: T[]): Promise<ApiRespo
       return {
         success: true
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error(`Error writing to ${filename}.json:`, error);
       return {
-        error: `Failed to write data: ${error.message}`,
+        error: `Failed to write data: ${error instanceof Error ? error.message : 'Unknown error'}`,
         success: false
       };
     }
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`Error saving data to ${filename}.json:`, error);
     return {
-      error: `Failed to save data: ${error.message}`,
+      error: `Failed to save data: ${error instanceof Error ? error.message : 'Unknown error'}`,
       success: false
     };
   }

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { FaInstagram, FaLinkedin, FaGithub, FaBars, FaCircle} from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaGithub, FaBars} from 'react-icons/fa';
 import Sidebar from './Sidebar';
 
 const Header = () => {

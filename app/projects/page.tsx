@@ -96,7 +96,7 @@ export default function Projects() {
         <div className="projects inspectable font-[family-name:var(--font-geist-sans)] min-h-screen">
             <ParallaxLines opacity={0.4} strokeWidth={3} zIndex={5} />
             <Header/>
-            <h1 className="inspectable z-10 relative">Things I've done </h1>
+            <h1 className="inspectable z-10 relative">Things I&apos;ve done </h1>
             <main className="relative z-10 flex flex-col gap-16 max-w-4xl mx-auto py-12 px-4 w-full">
                 
                 {/*----------------------------MOBILE VIEW----------------------------*/}

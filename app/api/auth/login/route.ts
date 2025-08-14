@@ -1,5 +1,6 @@
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: Request) {
   try {
@@ -37,10 +38,10 @@ export async function POST(request: Request) {
       success: false, 
       error: "Invalid password" 
     }, { status: 401 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     return NextResponse.json({ 
       success: false,
-      error: "Authentication error: " + error.message
+      error: "Authentication error: " + (error instanceof Error ? error.message : 'Unknown error')
     }, { status: 500 });
   }
 }

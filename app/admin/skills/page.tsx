@@ -2,8 +2,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { IconType } from "react-icons";
 import * as IconsFA from "react-icons/fa";
 import * as IconsSI from "react-icons/si";
 import * as IconsTB from "react-icons/tb";
@@ -21,7 +21,6 @@ export default function SkillsManagement() {
   const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [currentSkill, setCurrentSkill] = useState<Skill | null>(null);
-  const router = useRouter();
 
   // Fetch skills on load
   useEffect(() => {
@@ -91,15 +90,15 @@ export default function SkillsManagement() {
     ...Object.entries(IconsFA).filter(([key]) => key.startsWith('Fa')).reduce((acc, [key, value]) => {
       acc[key] = value;
       return acc;
-    }, {} as Record<string, any>),
+    }, {} as Record<string, IconType>),
     ...Object.entries(IconsSI).filter(([key]) => key.startsWith('Si')).reduce((acc, [key, value]) => {
       acc[key] = value;
       return acc;
-    }, {} as Record<string, any>),
+    }, {} as Record<string, IconType>),
     ...Object.entries(IconsTB).filter(([key]) => key.startsWith('Tb')).reduce((acc, [key, value]) => {
       acc[key] = value;
       return acc;
-    }, {} as Record<string, any>)
+    }, {} as Record<string, IconType>)
   };
 
   return (

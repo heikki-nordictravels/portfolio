@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function CodeInspector() {
   const [hoveredCode, setHoveredCode] = useState<string>('Hover over elements');
-  var [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [position, setPosition] = useState({ x: 20, y: 20 });
   const inspectorRef = useRef<HTMLDivElement>(null);
   
@@ -79,7 +79,7 @@ export default function CodeInspector() {
       document.removeEventListener('mousemove', handleMouseMove);
       elements.forEach(el => el.removeEventListener('mouseenter', handleMouseEnter));
     };
-  }, []);
+  });
 
   if (!isVisible) return null;
 

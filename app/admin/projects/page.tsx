@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -23,7 +22,6 @@ export default function ProjectsManagement() {
   const [isEditing, setIsEditing] = useState(false);
   const [currentProject, setCurrentProject] = useState<Project | null>(null);
   const [currentTool, setCurrentTool] = useState("");
-  const router = useRouter();
 
   // Fetch projects on load
   useEffect(() => {
@@ -148,7 +146,7 @@ export default function ProjectsManagement() {
           <div className="text-center py-12 text-[var(--text-body)]">Loading...</div>
         ) : projects.length === 0 ? (
           <div className="text-center py-12 text-[var(--text-body)]">
-            <p>No projects added yet. Click "Add New Project" to get started.</p>
+            <p>No projects added yet. Click &quot;Add New Project&quot; to get started.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

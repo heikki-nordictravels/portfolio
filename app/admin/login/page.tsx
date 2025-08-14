@@ -23,7 +23,7 @@ export default function AdminLogin() {
       } else {
         setError("Invalid password");
       }
-    } catch (err) {
+    } catch {
       setError("An error occurred. Please try again.");
     }
   };

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 type Experience = {
@@ -18,8 +17,6 @@ export default function ExperiencesManagement() {
   const [isLoading, setIsLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [currentExperience, setCurrentExperience] = useState<Experience | null>(null);
-  const router = useRouter();
-
   // Fetch experiences on load
   useEffect(() => {
     async function fetchExperiences() {

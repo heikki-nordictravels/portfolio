@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getExperiences, saveExperiences } from "@/lib/data";
-import { Experience } from "@/lib/models";
+
+export const dynamic = 'force-dynamic';
 
 // Get all experiences for admin
 export async function GET() {
@@ -73,10 +74,10 @@ export async function POST(request: NextRequest) {
     }
     
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in POST /api/admin/experiences:", error);
     return NextResponse.json(
-      { error: `Error processing request: ${error.message}`, success: false },
+      { error: `Error processing request: ${error instanceof Error ? error.message : 'Unknown error'}`, success: false },
       { status: 500 }
     );
   }
@@ -126,10 +127,10 @@ export async function DELETE(request: NextRequest) {
     }
     
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in DELETE /api/admin/experiences:", error);
     return NextResponse.json(
-      { error: `Error processing request: ${error.message}`, success: false },
+      { error: `Error processing request: ${error instanceof Error ? error.message : 'Unknown error'}`, success: false },
       { status: 500 }
     );
   }
