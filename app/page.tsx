@@ -107,14 +107,14 @@ export default function Home() {
     { id: "work-default", title: "IT Intern", company: "Nordic Unique Travels", period: "2025" }
   ]);
 
-  // Fetch data on component mount
+  // Load data directly from JSON files for static export
   useEffect(() => {
-    async function fetchData() {
+    async function loadData() {
       try {
-        // Fetch skills and experiences in parallel
+        // Load skills and experiences from JSON files
         const [skillsRes, experiencesRes] = await Promise.all([
-          fetch('/api/skills'),
-          fetch('/api/experiences')
+          fetch('/data/skills.json'),
+          fetch('/data/experiences.json')
         ]);
         
         const skillsData = await skillsRes.json();
@@ -158,7 +158,7 @@ export default function Home() {
       }
     }
     
-    fetchData();
+    loadData();
   }, []);
 
   return (

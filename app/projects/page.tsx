@@ -53,11 +53,11 @@ export default function Projects() {
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
 
-    // Fetch projects on component mount
+    // Load projects from JSON file for static export
     useEffect(() => {
-        async function fetchProjects() {
+        async function loadProjects() {
             try {
-                const response = await fetch('/api/projects');
+                const response = await fetch('/data/projects.json');
                 const data = await response.json();
                 
                 // Sort projects by display order (ascending), with fallback to year (descending)
@@ -81,7 +81,7 @@ export default function Projects() {
             }
         }
         
-        fetchProjects();
+        loadProjects();
     }, []);
 
     if (loading) {
