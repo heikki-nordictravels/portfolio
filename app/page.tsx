@@ -154,7 +154,6 @@ export default function Home() {
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-        // Keep default data on error
       }
     }
     
